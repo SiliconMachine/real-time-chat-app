@@ -23,13 +23,15 @@ services:
     container_name: mysql
     restart: unless-stopped
     tty: true
+    expose:
+      - "3306"
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: homestead
-      MYSQL_USER: homestead
-      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: chat_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:

@@ -18,18 +18,13 @@ npm install
 
 # Edit .env files with your Pusher keys
 ```
-BROADCAST_DRIVER=pusher
- 
+BROADCAST_DRIVER=pusher 
 PUSHER_APP_ID=your_pusher_app_id
 PUSHER_APP_KEY=your_pusher_app_key
 PUSHER_APP_SECRET=your_pusher_app_secret
 PUSHER_APP_CLUSTER=your_pusher_cluster
 ```
 
-# Create the .env file
-```
-cp .env.example .env
-```
 
 # Build the app with Docker
 ```
@@ -42,8 +37,13 @@ docker-compose build && docker-compose up -d
 docker-compose exec php php /var/www/artisan migrate --seed
 ```
 
+# Generate APP Key
+docker-compose exec php php /var/www/artisan key:generate                                                                                                                 
+
 # Watch for changes
 ```
 cd src
 npm run watch
 ```
+
+Go to ```http://localhost:8080/login```

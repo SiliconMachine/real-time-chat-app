@@ -1866,10 +1866,13 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    Echo["private"]("messages.".concat(this.user.id)).listen("NewMessage", function (e) {
+    console.log(Echo["private"]("messages.".concat(this.user.id)).listen("NewMessage", function (e) {
+      console.log("mounted and listen", e);
+
       _this.handleIncoming(e.message);
-    });
+    }));
     axios.get("/contacts").then(function (response) {
+      console.log("gssetting contacts");
       _this.contacts = response.data;
     });
   },
@@ -2019,11 +2022,11 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      axios.post('/conversation/send', {
+      axios.post("/conversation/send", {
         contact_id: this.contact.id,
         text: text
       }).then(function (response) {
-        _this.$emit('new', response.data);
+        _this.$emit("new", response.data);
       });
     }
   },
@@ -60575,12 +60578,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
+console.log("eu");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "f1a167482344f53b98dd",
+  key: "d74d0d9dd81abbdc9d61",
   cluster: "eu",
   encrypted: true
 });
+Pusher.logToConsole = true;
 
 /***/ }),
 
@@ -61037,8 +61042,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/alan/development/real-time-chat/src/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/alan/development/real-time-chat/src/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/alan/development/real-time-chat-app/src/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/alan/development/real-time-chat-app/src/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

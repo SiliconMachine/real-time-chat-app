@@ -23,10 +23,14 @@ export default {
     };
   },
   mounted() {
-    Echo.private(`messages.${this.user.id}`).listen("NewMessage", e => {
-      this.handleIncoming(e.message);
-    });
+    console.log(
+      Echo.private(`messages.${this.user.id}`).listen("NewMessage", e => {
+        console.log("mounted and listen", e);
+        this.handleIncoming(e.message);
+      })
+    );
     axios.get("/contacts").then(response => {
+      console.log("gssetting contacts");
       this.contacts = response.data;
     });
   },

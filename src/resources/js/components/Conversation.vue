@@ -20,19 +20,21 @@ export default {
       default: []
     }
   },
-        methods: {
-            sendMessage(text) {
-                if (!this.contact) {
-                    return;
-                }
-                axios.post('/conversation/send', {
-                    contact_id: this.contact.id,
-                    text: text
-                }).then((response) => {
-                    this.$emit('new', response.data);
-                })
-            }
-        },
+  methods: {
+    sendMessage(text) {
+      if (!this.contact) {
+        return;
+      }
+      axios
+        .post("/conversation/send", {
+          contact_id: this.contact.id,
+          text: text
+        })
+        .then(response => {
+          this.$emit("new", response.data);
+        });
+    }
+  },
   components: { MessagesFeed, MessageComposer }
 };
 </script>
